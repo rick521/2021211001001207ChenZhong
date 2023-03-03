@@ -8,6 +8,12 @@
 <h1><%= "2021211001001207ChenZhong" %>
 </h1>
 <br/>
-<a href="hello-servlet">Hello Servlet</a>
+<%-- get is def--%>
+<form method="post">
+    Username :<input type="text" name="username"><br/>
+    Password :<input type="password" name="password"><br/>
+    <input type="submit">login</input>
+
+</form>
 </body>
 </html>
