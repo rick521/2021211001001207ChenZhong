@@ -9,10 +9,17 @@
 </h1>
 <br/>
 <%-- get is def--%>
-<form method="post">
+<form method="POST">
     Username :<input type="text" name="username"><br/>
     Password :<input type="password" name="password"><br/>
-    <input type="submit">login</input>
+    <input type="submit">POST</input>
+
+</form>
+
+<form method="GET">
+    Username :<input type="text" name="username"><br/>
+    Password :<input type="password" name="password"><br/>
+    <input type="submit">GET</input>
 
 </form>
 </body>
