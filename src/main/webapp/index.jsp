@@ -14,13 +14,5 @@
     Password :<input type="password" name="password"><br/>
     <input type="submit">POST</input>
 
-</form>
-
-<form method="GET">
-    Username :<input type="text" name="username"><br/>
-    Password :<input type="password" name="password"><br/>
-    <input type="submit">GET</input>
-
-</form>
-</body>
+</form></body>
 </html>

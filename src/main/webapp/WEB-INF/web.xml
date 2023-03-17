@@ -4,11 +4,27 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
     <servlet>
-        <servlet-name>chen_zhong</servlet-name>
+        <servlet-name>helloServlet</servlet-name>
         <servlet-class>com.chenzhong.week2.HelloServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LifeCycleServlet</servlet-name>
+        <servlet-class>com.chenzhong.week3.LifeCycleServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>com.chenzhong.week3.RegisterServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
-        <servlet-name>chen_zhong</servlet-name>
+        <servlet-name>helloServlet</servlet-name>
         <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LifeCycleServlet</servlet-name>
+        <url-pattern>/week3</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/jdbc</url-pattern>
     </servlet-mapping>
 </web-app>
