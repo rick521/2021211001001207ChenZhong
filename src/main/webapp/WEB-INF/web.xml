@@ -11,10 +11,44 @@
         <servlet-name>LifeCycleServlet</servlet-name>
         <servlet-class>com.chenzhong.week3.LifeCycleServlet</servlet-class>
     </servlet>
+
+
+
     <servlet>
-        <servlet-name>RegisterServlet</servlet-name>
-        <servlet-class>com.chenzhong.week3.RegisterServlet</servlet-class>
+        <servlet-name>ConfigDemoServlet</servlet-name>
+        <servlet-class>com.chenzhong.week4.homework.exercise1.ConfigDemoServlet</servlet-class>
+        <init-param>
+            <param-name>name</param-name>
+            <param-value>chenzhong</param-value>
+        </init-param>
+        <init-param>
+            <param-name>id</param-name>
+            <param-value>2021211001001207</param-value>
+        </init-param>
     </servlet>
+
+<!--    Here is week 4's Servlet but be replaced by @WebServlet-->
+<!--    <servlet>-->
+<!--        <servlet-name>JDBCDemoServlet</servlet-name>-->
+<!--        <servlet-class>com.chenzhong.week4.JDBCDemoServlet</servlet-class>-->
+<!--            <init-param>-->
+<!--                <param-name>url</param-name>-->
+<!--                <param-value>jdbc:mysql://139.224.68.119:3306/userdb?characterEncoding=utf-8</param-value>-->
+<!--            </init-param>-->
+<!--            <init-param>-->
+<!--                <param-name>driver</param-name>-->
+<!--                <param-value>com.mysql.jdbc.Driver</param-value>-->
+<!--            </init-param>-->
+<!--            <init-param>-->
+<!--                <param-name>username</param-name>-->
+<!--                <param-value>user</param-value>-->
+<!--            </init-param>-->
+<!--            <init-param>-->
+<!--                <param-name>password</param-name>-->
+<!--                <param-value>123456</param-value>-->
+<!--            </init-param>-->
+<!--    </servlet>-->
+
     <servlet-mapping>
         <servlet-name>helloServlet</servlet-name>
         <url-pattern>/hello</url-pattern>
@@ -23,8 +57,13 @@
         <servlet-name>LifeCycleServlet</servlet-name>
         <url-pattern>/week3</url-pattern>
     </servlet-mapping>
+
+<!--    <servlet-mapping>-->
+<!--        <servlet-name>JDBCDemoServlet</servlet-name>-->
+<!--        <url-pattern>/jdbc_week4</url-pattern>-->
+<!--    </servlet-mapping>-->
     <servlet-mapping>
-        <servlet-name>RegisterServlet</servlet-name>
-        <url-pattern>/jdbc</url-pattern>
+        <servlet-name>ConfigDemoServlet</servlet-name>
+        <url-pattern>/config</url-pattern>
     </servlet-mapping>
 </web-app>
