@@ -72,6 +72,8 @@ public class RegisterServlet extends HttpServlet {
         String birthdate=request.getParameter("birthdate");
         String sql = String.format("insert into usertable (username,password,email,gender,birthdate) VALUES ('%s','%s','%s','%s','%s')",username,password,email,gender,birthdate);
         System.out.println(sql);
+
+
         try {
             stmt.execute(sql);
         } catch (SQLException e) {
