@@ -14,7 +14,6 @@ public class ConfigDemoServlet extends HttpServlet {
         String name=config.getInitParameter("name");
         String id=config.getInitParameter("id");
         PrintWriter out=response.getWriter();
-
         out.write("<br>username:"+name);
         out.write("<br>ID:"+id);
     }
