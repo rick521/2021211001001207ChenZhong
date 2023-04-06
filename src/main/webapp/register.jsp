@@ -61,7 +61,7 @@
     }
 </script>
 
-<form method="post" name="myForm" action="register" onsubmit="return validateForm()">
+<form method="get" name="myForm" action="register" onsubmit="return validateForm()">
     <label>Username:</label><input type="text" name="username"/><br>
     Password:<input type="password" name="password"/><br>
     Email:<input type="text" name="email"/><br>

@@ -26,32 +26,6 @@ public class RegisterServlet extends HttpServlet {
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//        try {
-//            ResultSet rs = stmt.executeQuery("SELECT * FROM usertable");PrintWriter out=response.getWriter();
-//            out.println("<table border='1'>");
-//            out.println("<tr><th>Username</th><th>Password</th><th>Email</th><th>Gender</th><th>Birthdate</th></tr>");
-//
-//            while(rs.next()){
-//                String username  = rs.getString("username");
-//                String password = rs.getString("password");
-//                String email= rs.getString("email");
-//                String gender  = rs.getString("gender");
-//                String birthdate = rs.getString("birthdate");
-//                out.println("<tr><td>" + username + "</td><td>" + password + "</td><td>" + email + "</td><td>" + gender + "</td><td>" + birthdate + "</td></tr>");
-//
-//            }
-//            rs.close();
-//        }catch (Exception e){
-//
-//        }
-        response.sendRedirect("/login.jsp");
-
-
-
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username=request.getParameter("username");
         String password=request.getParameter("password");
         String email=request.getParameter("email");
@@ -63,9 +37,21 @@ public class RegisterServlet extends HttpServlet {
 
         try {
             stmt.execute(sql);
+            response.sendRedirect("login.jsp");
+
         } catch (SQLException e) {
+            response.sendRedirect("register.jsp");
+
             throw new RuntimeException(e);
         }
+
+
+
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 
 
     }
