@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.io.PrintWriter" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2023-03-30
@@ -13,6 +13,11 @@
     <title>Title</title>
 </head>
 <body>
+<%
+    if(!(request.getAttribute("message")==null)){
+        out.print("<h3>"+request.getAttribute("message")+"</h3>");
+    }
+%>
 Login:
 <form method="POST" action="login" >
     Username :<input type="text" name="username"><br/>

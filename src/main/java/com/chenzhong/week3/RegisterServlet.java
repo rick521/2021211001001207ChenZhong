@@ -8,14 +8,7 @@ import java.io.PrintWriter;
 import java.sql.*;
 
 @WebServlet(
-        urlPatterns ={"/register"},
-        initParams = {
-                @WebInitParam(name="driver",value = "com.mysql.jdbc.Driver"),
-                @WebInitParam(name="url",value = "jdbc:mysql://139.224.68.119:3306/userdb?characterEncoding=utf-8"),
-                @WebInitParam(name="username",value = "user"),
-                @WebInitParam(name="password",value = "123456"),
-
-        },loadOnStartup = 1
+        urlPatterns ={"/register"}
 )
 
 public class RegisterServlet extends HttpServlet {
@@ -24,40 +17,34 @@ public class RegisterServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
-        ServletConfig config=getServletConfig();
-        String JDBC_DRIVER=config.getInitParameter("driver");
-        String DB_URL=config.getInitParameter("url");
-        String USER=config.getInitParameter("username");
-        String PASS=config.getInitParameter("password");
+        conn=(Connection)getServletContext().getAttribute("con");
         try {
-            Class.forName(JDBC_DRIVER);
-            conn = DriverManager.getConnection(DB_URL, USER, PASS);
-            stmt = conn.createStatement();
-
-        } catch (Exception e) {
+            stmt=conn.createStatement();
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-            ResultSet rs = stmt.executeQuery("SELECT * FROM usertable");PrintWriter out=response.getWriter();
-            out.println("<table border='1'>");
-            out.println("<tr><th>Username</th><th>Password</th><th>Email</th><th>Gender</th><th>Birthdate</th></tr>");
-
-            while(rs.next()){
-                String username  = rs.getString("username");
-                String password = rs.getString("password");
-                String email= rs.getString("email");
-                String gender  = rs.getString("gender");
-                String birthdate = rs.getString("birthdate");
-                out.println("<tr><td>" + username + "</td><td>" + password + "</td><td>" + email + "</td><td>" + gender + "</td><td>" + birthdate + "</td></tr>");
-
-            }
-            rs.close();
-        }catch (Exception e){
-
-        }
+//        try {
+//            ResultSet rs = stmt.executeQuery("SELECT * FROM usertable");PrintWriter out=response.getWriter();
+//            out.println("<table border='1'>");
+//            out.println("<tr><th>Username</th><th>Password</th><th>Email</th><th>Gender</th><th>Birthdate</th></tr>");
+//
+//            while(rs.next()){
+//                String username  = rs.getString("username");
+//                String password = rs.getString("password");
+//                String email= rs.getString("email");
+//                String gender  = rs.getString("gender");
+//                String birthdate = rs.getString("birthdate");
+//                out.println("<tr><td>" + username + "</td><td>" + password + "</td><td>" + email + "</td><td>" + gender + "</td><td>" + birthdate + "</td></tr>");
+//
+//            }
+//            rs.close();
+//        }catch (Exception e){
+//
+//        }
+        response.sendRedirect("/login.jsp");
 
 
 

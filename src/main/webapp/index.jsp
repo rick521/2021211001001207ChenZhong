@@ -10,12 +10,21 @@
 <h1><%= "2021211001001207ChenZhong" %>
 </h1>
 <br/>
-<%-- get is def--%>
-<form method="POST">
-    Username :<input type="text" name="username"><br/>
-    Password :<input type="password" name="password"><br/>
-    <input type="submit">POST</input>
+<form method="get" target="_blank" action="search">
+    <input type="text" name="txt" size="30"/>
+    <select name="search">
+        <option value="baidu">Baidu</option>
+        <option value="bing">Bing</option>
+        <option value="google">Google</option>
 
-</form></body>
+    </select>
+    <input type="submit" value="Search"/>
+
+
+</form>
+
+
+
+</body>
 </html>
 <%@include file="footer.jsp"%>
