@@ -1,5 +1,8 @@
 package com.chenzhong.week5;
 
+import com.chenzhong.dao.UserDao;
+import com.chenzhong.model.User;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -25,6 +28,7 @@ public class LoginServlet extends HttpServlet {
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("WEB-INF/views/login.jsp").forward(request,response);
 
     }
 
@@ -32,33 +36,19 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String username=request.getParameter("username");
         String password=request.getParameter("password");
-        String sql = String.format("select * from usertable where username='%s' and password='%s'",username,password);
-        System.out.println(sql);
-
+        UserDao userDao=new UserDao();
         try {
-            ResultSet rs=stmt.executeQuery(sql);
-            if(rs.next()){
-                request.setAttribute("id",rs.getInt("id"));
-                request.setAttribute("username",rs.getString("username"));
-                request.setAttribute("password",rs.getString("password"));
-                request.setAttribute("email",rs.getString("email"));
-                request.setAttribute("gender",rs.getString("gender"));
-                request.setAttribute("birthdate",rs.getString("birthdate"));
-                request.getRequestDispatcher("userlist.jsp").forward(request,response);
-                System.out.println(rs.getString("username"));
-
-//                out.println("login successful");
-//                out.println("welcome:"+username);
-            }else {
-                request.setAttribute("message",("Login failed"));
-
-                request.getRequestDispatcher("login.jsp").forward(request,response);
-
-
-            }
+           User user= userDao.findByUsernamePassword(conn,username,password);
+           if(user!=null){
+               request.setAttribute("user",user);
+               request.getRequestDispatcher("WEB-INF/views/userInfo.jsp").forward(request,response);
+           }else {
+               request.setAttribute("message",("Login failed"));
+               request.getRequestDispatcher("WEB-INF/views/login.jsp").forward(request,response);
+           }
         } catch (SQLException e) {
-
             throw new RuntimeException(e);
         }
+
     }
 }
